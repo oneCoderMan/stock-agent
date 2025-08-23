@@ -4,9 +4,11 @@ spring:
   ai:
     dashscope:
       api-key: sk-4b5f9bd9fc414964948966c571ddfc11
+    # multi model switch
+    chat:
+      client:
+        enabled: true
 
-
-# enabled debug log out.
 logging:
   level:
     org.springframework.ai: debug
@@ -28,3 +30,6 @@ management:
     sampling:
       # trace 采样信息，记录每个请求
       probability: 1.0
+
+
+

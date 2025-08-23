@@ -10,9 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-public class AiMainApp {
+public class StockAgentMainApp {
     public static void main(String[] args) {
 
-        SpringApplication.run(AiMainApp.class, args);
+        SpringApplication.run(StockAgentMainApp.class, args);
     }
 }

@@ -5,19 +5,26 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.codersim</groupId>
-        <artifactId>ai</artifactId>
+        <artifactId>stock-agent</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ai-domain</artifactId>
+    <artifactId>stock-agent-domain</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencies>
+        <!--  self -->
+        <dependency>
+            <groupId>com.codersim</groupId>
+            <artifactId>stock-agent-sdk</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-commons</artifactId>

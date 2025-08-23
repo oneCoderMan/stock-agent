@@ -1,5 +1,6 @@
 package com.codersim.controller;
 
+import com.codersim.test.api.TestConsumer;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-public class TestController {
-//    @Resource
+public class TestController implements TestConsumer {
+
     private final ChatClient chatClient;
 
     public TestController(ChatClient.Builder chatClientBuilder) {
@@ -21,9 +22,9 @@ public class TestController {
     }
 
 
+    @Override
     @GetMapping("/ai")
-    String generation(@RequestParam("userInput") String userInput) {
-//        return userInput;
+    public String generation(@RequestParam("userInput") String userInput) {
         return this.chatClient.prompt()
                 .user(userInput)
                 .call()

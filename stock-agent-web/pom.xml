@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.codersim</groupId>
-        <artifactId>ai</artifactId>
+        <artifactId>stock-agent</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ai-web</artifactId>
+    <artifactId>stock-agent-web</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -19,6 +19,21 @@
     </properties>
 
     <dependencies>
+        <!-- self start -->
+        <dependency>
+            <groupId>com.codersim</groupId>
+            <artifactId>stock-agent-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.codersim</groupId>
+            <artifactId>stock-agent-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.codersim</groupId>
+            <artifactId>stock-agent-infrastructure</artifactId>
+        </dependency>
+
+        <!-- self end-->
 
         <dependency>
             <groupId>com.alibaba.cloud.ai</groupId>
