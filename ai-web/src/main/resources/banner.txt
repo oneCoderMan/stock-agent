@@ -1,0 +1,4 @@
+
+Profile: ${spring.profiles.active}
+Name: ${spring.application.name} Port: ${server.port} Pid: ${pid}
+
