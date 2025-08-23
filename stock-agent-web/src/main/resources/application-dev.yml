@@ -3,7 +3,7 @@
 spring:
   ai:
     dashscope:
-      api-key: sk-4b5f9bd9fc414964948966c571ddfc11
+      api-key: ${you key}
     # multi model switch
     chat:
       client:
