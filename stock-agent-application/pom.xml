@@ -21,6 +21,7 @@
             <groupId>com.codersim</groupId>
             <artifactId>stock-agent-domain</artifactId>
         </dependency>
+
     </dependencies>
 
     <properties>

@@ -2,8 +2,10 @@ package com.codersim.chat.service;
 
 import com.alibaba.cloud.ai.dashscope.api.DashScopeResponseFormat;
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatOptions;
+import com.codersim.exception.StockAgentAppException;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,9 @@ public class ChatAppService {
 
 
     public Flux<String> chat(String chatId, String model, String prompt) {
+        if (StringUtils.isEmpty(chatId)) {
+            throw new StockAgentAppException("chatId is empty");
+        }
         log.debug("chat model is: {}", model);
 
         var runtimeOptions = DashScopeChatOptions.builder()
