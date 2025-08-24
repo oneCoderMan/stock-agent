@@ -1,6 +1,7 @@
 package com.codersim.controller;
 
 import com.codersim.test.api.TestConsumer;
+import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,11 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController implements TestConsumer {
 
-    private final ChatClient chatClient;
+    @Resource(name = "aLiChatClient")
+    private ChatClient chatClient;
 
-    public TestController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
-    }
 
 
     @Override

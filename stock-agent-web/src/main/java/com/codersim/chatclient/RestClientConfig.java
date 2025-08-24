@@ -1,4 +1,4 @@
-package com.codersim.config;
+package com.codersim.chatclient;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

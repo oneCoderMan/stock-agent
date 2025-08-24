@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS ai_chat_memory ( conversation_id TEXT NOT NULL,    content TEXT NOT NULL, type TEXT NOT NULL, timestamp REAL NOT NULL,    CHECK (type IN ('USER', 'ASSISTANT', 'SYSTEM', 'TOOL')));

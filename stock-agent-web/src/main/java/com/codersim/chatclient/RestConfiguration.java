@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.codersim.config;
+package com.codersim.chatclient;
 
 import org.springframework.boot.http.client.ClientHttpRequestFactoryBuilder;
 import org.springframework.boot.web.client.RestClientCustomizer;
