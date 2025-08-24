@@ -4,6 +4,7 @@ import com.codersim.model.ModelService;
 import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.context.annotation.Bean;
@@ -23,8 +24,18 @@ public class ChatClientConfig {
     @Resource
     private ModelService modelService;
 
+    /**
+     * 记忆功能
+     */
     @Resource
     private MessageChatMemoryAdvisor messageChatMemoryAdvisor;
+
+    /**
+     * 记录日志
+     */
+    @Resource
+    private SimpleLoggerAdvisor simpleLoggerAdvisor;
+
 
     private static final String DASH_SCOPE_CHAT_MODEL = "dashscopeChatModel";
 
@@ -33,7 +44,7 @@ public class ChatClientConfig {
         ChatModel chatModel = modelService.getChatModel(DASH_SCOPE_CHAT_MODEL);
         return ChatClient.builder(chatModel)
                 .defaultSystem(defaultPromptTemplate.getTemplate())
-                .defaultAdvisors(messageChatMemoryAdvisor)
+                .defaultAdvisors(messageChatMemoryAdvisor, simpleLoggerAdvisor)
                 .build();
     }
 }
