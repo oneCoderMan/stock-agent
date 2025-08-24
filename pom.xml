@@ -27,7 +27,6 @@
         <module>stock-agent-sdk</module>
         <module>stock-agent-application</module>
         <module>stock-agent-infrastructure</module>
-        <module>stock-agent-data</module>
     </modules>
 
     <scm>

@@ -25,6 +25,7 @@
             <artifactId>stock-agent-sdk</artifactId>
         </dependency>
 
+        <!-- spring AI start -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-commons</artifactId>
@@ -39,7 +40,20 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-autoconfigure-retry</artifactId>
         </dependency>
+        <!-- spring AI end -->
 
+        <!-- Spring AI Alibaba  start -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-tika-document-reader</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-markdown-document-reader</artifactId>
+        </dependency>
+        <!-- Spring AI Alibaba  end -->
+
+        <!-- tools start -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -57,6 +71,8 @@
             <artifactId>slf4j-jdk14</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- tools end -->
 
         <!-- util -->
         <dependency>

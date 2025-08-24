@@ -10,4 +10,6 @@ import reactor.core.publisher.Flux;
  */
 public interface IRagAppService {
     Flux<String> ragChat(String chatId, String prompt);
+
+    void initVectorData();
 }
