@@ -24,7 +24,7 @@ public class RagEsAppService implements IRagAppService {
      * TODO 完成 ES 的写入
      */
     @Override
-    public void initVectorData() {
+    public void initVectorData(String fileDirPath) {
 
     }
 }

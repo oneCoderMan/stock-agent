@@ -2,7 +2,7 @@
 spring:
   ai:
     dashscope:
-      api-key: {API-KEY}
+      api-key: xxx
     # multi model switch
     chat:
       client:
@@ -23,6 +23,16 @@ spring:
           jdbc:
             initialize-schema: always
             schema: 'classpath:schema-memory.sql'
+
+    # mcp 配置
+    mcp:
+      client:
+        toolcallback:
+          enabled: true
+        sse:
+          connections:
+            server1:
+              url: http://localhost:8090/
 
   # config DB
   datasource:

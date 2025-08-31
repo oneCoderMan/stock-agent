@@ -27,8 +27,8 @@ import static java.util.Collections.emptyList;
 @Service
 @Slf4j
 public class MarkdownFileReaderDomainService {
-    public List<Document> readMarkdownFile() throws Exception {
-        List<MarkdownDocumentReader> markdownDocumentReaderList = loadMarkdownDocuments();
+    public List<Document> readMarkdownFile(String filePath) throws Exception {
+        List<MarkdownDocumentReader> markdownDocumentReaderList = loadMarkdownDocuments(filePath);
 
         int size = 0;
         if (markdownDocumentReaderList.isEmpty()) {
@@ -48,12 +48,12 @@ public class MarkdownFileReaderDomainService {
         return allDocument;
     }
 
-    private List<MarkdownDocumentReader> loadMarkdownDocuments()
+    private List<MarkdownDocumentReader> loadMarkdownDocuments(String fileDirPath)
             throws IOException, URISyntaxException {
         List<MarkdownDocumentReader> readers;
 
         // 首先检查jar包当前运行目录是否存在markdown文件
-        Path currentDirPath = Paths.get(System.getProperty("user.dir"), "rag", "markdown");
+        Path currentDirPath = Paths.get(fileDirPath);
 
         if (Files.exists(currentDirPath) && Files.isDirectory(currentDirPath)) {
             log.info("Found markdown directory in current running directory: {}", currentDirPath);
@@ -79,23 +79,7 @@ public class MarkdownFileReaderDomainService {
         } else {
             log.info("Markdown directory not found in current directory, falling back to resources");
         }
-
-        // 如果当前运行目录没有找到，则从resources目录加载
-        Path markdownDir = Paths.get(getClass().getClassLoader().getResource("rag/markdown").toURI());
-        log.info("Loading markdown files from resources directory: {}", markdownDir);
-
-        try (Stream<Path> paths = Files.walk(markdownDir)) {
-            readers = paths.filter(Files::isRegularFile)
-                    .filter(path -> path.toString().endsWith(".md"))
-                    .map(path -> {
-                        String fileName = path.getFileName().toString();
-                        String classpathPath = "classpath:rag/markdown/" + fileName;
-                        return new MarkdownDocumentReader(classpathPath);
-                    })
-                    .collect(Collectors.toList());
-        }
-
-        return readers;
+        return emptyList();
     }
 
 }

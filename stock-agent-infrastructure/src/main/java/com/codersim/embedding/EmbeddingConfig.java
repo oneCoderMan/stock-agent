@@ -1,5 +1,8 @@
 package com.codersim.embedding;
 
+import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -11,15 +14,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EmbeddingConfig {
 
+    @Value("${spring.ai.dashscope.api-key:}")
+    private String aiDashScopeApiKey;
 
-//    @Resource
-//    private DashScopeApi dashscopeApi;
-//    这个没有调试成功，失败了
-//    @Bean
-//    public EmbeddingModel DashScopeEmbeddingModel() {
-//        return new DashScopeEmbeddingModel(dashscopeApi, MetadataMode.EMBED,
-//                DashScopeEmbeddingOptions.builder()
-//                        .withModel("text-embedding-v2")
-//                        .build());
-//    }
+    /**
+     * 百炼调用时需要配置 DashScope API，对 dashScopeApi 强依赖。
+     * @return
+     */
+    @Bean
+    public DashScopeApi dashScopeApi() {
+        return DashScopeApi.builder()
+                .apiKey(aiDashScopeApiKey)
+                .build();
+    }
+
 }

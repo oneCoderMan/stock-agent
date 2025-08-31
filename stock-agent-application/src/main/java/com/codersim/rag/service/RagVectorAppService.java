@@ -74,13 +74,17 @@ public class RagVectorAppService implements IRagAppService {
                 .content();
     }
 
+    /**
+     * todo 完成 filepath 的读取
+     * @param fileDirPath 目录路径
+     */
     @Override
-    public void initVectorData() {
+    public void initVectorData(String fileDirPath) {
         StopWatch watch = new StopWatch("initVectorData");
         List<Document> documents = null;
         watch.start("readMarkdownFile");
         try {
-            documents = markdownFileReaderDomainService.readMarkdownFile();
+            documents = markdownFileReaderDomainService.readMarkdownFile(fileDirPath);
         } catch (Exception e) {
             log.warn("markdown file read errror", e);
         }

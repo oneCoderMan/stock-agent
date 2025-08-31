@@ -7,6 +7,7 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,6 +37,8 @@ public class ChatClientConfig {
     @Resource
     private SimpleLoggerAdvisor simpleLoggerAdvisor;
 
+    @Resource
+    private ToolCallbackProvider toolCallbackProvider;
 
     private static final String DASH_SCOPE_CHAT_MODEL = "dashscopeChatModel";
 
@@ -44,6 +47,16 @@ public class ChatClientConfig {
         ChatModel chatModel = modelService.getChatModel(DASH_SCOPE_CHAT_MODEL);
         return ChatClient.builder(chatModel)
                 .defaultSystem(defaultPromptTemplate.getTemplate())
+                .defaultAdvisors(messageChatMemoryAdvisor, simpleLoggerAdvisor)
+                .build();
+    }
+
+    @Bean("aLiChatMcpClient")
+    public ChatClient initDashChatToolClient() {
+        ChatModel chatModel = modelService.getChatModel(DASH_SCOPE_CHAT_MODEL);
+        return ChatClient.builder(chatModel)
+                .defaultSystem(defaultPromptTemplate.getTemplate())
+                .defaultToolCallbacks(toolCallbackProvider)
                 .defaultAdvisors(messageChatMemoryAdvisor, simpleLoggerAdvisor)
                 .build();
     }

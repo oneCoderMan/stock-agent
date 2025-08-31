@@ -33,4 +33,4 @@ build/
 ### VS Code ###
 .vscode/
 logs/
-.DS_Stor
+.DS_Store
